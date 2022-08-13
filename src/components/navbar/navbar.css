@@ -1,0 +1,21 @@
+.navbar-container {
+    display: flex;
+    padding: 15px 30px;
+    justify-items: center;
+    align-items: center;
+}
+.logo-container {
+    flex: 1;
+    text-align: left;
+    font-size: x-large;
+}
+.search-container {
+    flex: 1;
+    border: 0.5px solid lightgray;
+    display: flex;
+}
+.cart-account-container {
+    flex: 2;
+    display: flex;
+    justify-content: flex-end;
+}
