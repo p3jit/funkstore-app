@@ -20,17 +20,13 @@ function Carousel() {
     console.log(currSlide);
   };
 
-useEffect(()=>{
-  // imageContainerRef.current.style.backgroundImage = `url(${require(`../../../static/${carouselImages[currSlide]}"`)})`;
-  console.log(imageContainerRef.current);
-},[currSlide])
   return (
     <>
-        <div className='carousel-container'>
-            <div className='arrow' onClick={()=>{changeSlide(-1)}}>◄</div>
-            <div className='img-container' ref={imageContainerRef}></div>
-            <div className='arrow right' onClick={()=>{changeSlide(1)}}>►</div>
-        </div>
+      <div className='carousel-container'>
+          <div className='arrow' onClick={()=>{changeSlide(-1)}}>◄</div>
+          <div className='img-container' ref={imageContainerRef} style={{ backgroundImage: `url(${require(`../../../public/assets/bannerImages/${carouselImages[currSlide]}`)})`}}></div>
+          <div className='arrow right' onClick={()=>{changeSlide(1)}}>►</div>
+      </div>
     </>
     
   )
