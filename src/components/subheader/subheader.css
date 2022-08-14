@@ -1,0 +1,17 @@
+.subheader-container {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 20px;
+    background-color: rgb(233, 232, 232);
+}
+.subheader-item {
+    text-decoration: none;
+    color: black;
+    font-size: large;
+}
+
+@media (max-width: 560.98px){
+    .subheader-item {
+        font-size: medium;
+    }
+}

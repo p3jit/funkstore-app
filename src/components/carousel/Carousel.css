@@ -18,5 +18,9 @@
 
 .img-container {
     width: 100%;
-    background-color: rgb(231, 187, 137);height: 500px;
+    background-color: rgb(231, 187, 137);
+    height: 500px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position-y: -70px;
 }
