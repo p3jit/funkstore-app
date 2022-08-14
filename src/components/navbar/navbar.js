@@ -29,7 +29,7 @@ function Navbar() {
                 <div className='account-link'>REGISTER/SIGN IN</div>
                 <div className='cart-container'>
                     <div className='cart-txt'>CART</div>
-                    <StyledBadge badgeContent={1} color="primary">
+                    <StyledBadge badgeContent={1} color="warning">
                         <button className='cart-btn'><ShoppingBagOutlinedIcon/></button>
                     </StyledBadge>
                 </div>
