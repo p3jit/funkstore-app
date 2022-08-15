@@ -1,10 +1,23 @@
 .carousel .carousel-item {
-    height: 600px;
+    height: 400px;
 }
   
 .carousel-item img {
     position: absolute;
     top: 0;
     left: 0;
-    min-height: 600px;
+    min-height: 400px;
+}
+
+@media (min-width: 768px){
+    .carousel .carousel-item {
+        height: 600px;
+    }
+      
+    .carousel-item img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        min-height: 600px;
+    }
 }

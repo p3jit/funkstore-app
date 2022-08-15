@@ -7,11 +7,10 @@ function App() {
     <div className="App bg-light">
       <Navbar/>
       <Subheader/>
-      <div className="container">
+      <div className="container-lg">
         <Carousel/>
       </div>
     </div>
   );
 }
-
 export default App;
