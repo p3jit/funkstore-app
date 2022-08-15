@@ -1,34 +1,35 @@
-import React, { useState , useEffect , useRef} from 'react'
 import "./Carousel.css"
 import { carouselImages } from "../../data"
 
 function Carousel() {
-  const [currSlide , setCurrSlide] = useState(0);
-  const imageContainerRef = useRef();
-
-  //Function to change the Slides with buttons
-  function changeSlide(val) {
-    if(currSlide + val > carouselImages.length - 1) {
-      setCurrSlide(0);
-    }
-    else if(currSlide + val < 0) {
-      setCurrSlide(carouselImages.length-1);
-    }
-    else {
-      setCurrSlide(currSlide+val);
-    }
-    console.log(currSlide);
-  };
 
   return (
-    <>
-      <div className='carousel-container'>
-          <div className='arrow' onClick={()=>{changeSlide(-1)}}>◄</div>
-          <div className='img-container' ref={imageContainerRef} style={{ backgroundImage: `url(${require(`../../../public/assets/bannerImages/${carouselImages[currSlide]}`)})`}}></div>
-          <div className='arrow right' onClick={()=>{changeSlide(1)}}>►</div>
+    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
       </div>
-    </>
-    
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src={require(`../../../public/assets/bannerImages/${carouselImages[0]}`)} class="d-block w-100" alt="..."/>
+        </div>
+        <div class="carousel-item">
+          <img src={require(`../../../public/assets/bannerImages/${carouselImages[1]}`)} class="d-block w-100" alt="..."/>
+        </div>
+        <div class="carousel-item">
+          <img src={require(`../../../public/assets/bannerImages/${carouselImages[2]}`)} class="d-block w-100" alt="..."/>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
   )
 }
 
