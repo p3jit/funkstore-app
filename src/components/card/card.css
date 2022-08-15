@@ -1,0 +1,15 @@
+.card-img {
+    height:550px;
+    border-radius: 0;
+}
+.card {
+    border-radius: 0;
+    cursor: pointer;
+    margin: 5px 0;
+}
+.card-body {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    background-color: rgba(24, 23, 23, 0.637);
+}
