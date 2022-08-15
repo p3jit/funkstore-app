@@ -1,18 +1,19 @@
 import { Routes , Route } from "react-router-dom";
-import Footer from "./components/footer/footer";
-import Navbar from "./components/navbar/navbar";
-import Subheader from "./components/subheader/subheader";
 import Home from "./pages/home";
+import Login from "./pages/login";
+import Product from "./pages/product";
+import Register from "./pages/register";
 
 function App() {
+
   return (
     <>
-      <Navbar/>
-      <Subheader/>
       <Routes>
         <Route path="/" element={<Home/>}/>
+        <Route path="/products" element={<Product/>}/>
+        <Route path="/login" element={<Login/>}/>
+        <Route path="/register" element={<Register/>}/>
       </Routes>
-      <Footer/>
     </>
   );
 }
