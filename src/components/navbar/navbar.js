@@ -19,7 +19,7 @@ function Navbar() {
     <>
         <div className='navbar-container'>
             <div className='logo-container'>
-                <h4>FunkStore.</h4>
+                <a href="/" className='logo'>FunkStore.</a>
             </div>
             <div className='search-container'>
                 <input className='search-bar'/>

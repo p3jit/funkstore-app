@@ -4,6 +4,10 @@
     justify-items: center;
     align-items: center;
 }
+.logo , .logo:hover {
+    text-decoration: none;
+    color: black;
+}
 .logo-container {
     flex: 1;
     text-align: left;

@@ -3,6 +3,7 @@ import Home from "./pages/home";
 import Login from "./pages/login";
 import Product from "./pages/product";
 import Register from "./pages/register";
+import Error from "./pages/error";
 
 function App() {
 
@@ -13,6 +14,7 @@ function App() {
         <Route path="/products" element={<Product/>}/>
         <Route path="/login" element={<Login/>}/>
         <Route path="/register" element={<Register/>}/>
+        <Route path="*" element={<Error/>}/>
       </Routes>
     </>
   );

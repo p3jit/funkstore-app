@@ -1,0 +1,11 @@
+.error {
+    background-image: url("../../public/assets/404.jpg");
+    width: 100vw;
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.error-section-container {
+    padding: 10vh 10vw;
+    background-color: antiquewhite;
+}
