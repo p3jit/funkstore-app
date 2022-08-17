@@ -1,10 +1,11 @@
-import React from 'react'
+import {React , useContext} from 'react'
 import "./navbar.css"
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import { styled } from '@mui/material/styles';
 import ShoppingBagOutlinedIcon from '@mui/icons-material/ShoppingBagOutlined';
 import Badge from '@mui/material/Badge';
 import { Link } from 'react-router-dom';
+import { AuthProvider } from '../../context/authContext';
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
     '& .MuiBadge-badge': {
@@ -16,6 +17,9 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
   }));
 
 function Navbar() {
+  
+  const {user} = useContext(AuthProvider);
+  
   return (
     <>
         <div className='navbar-container'>
@@ -27,7 +31,7 @@ function Navbar() {
                 <button className='search-btn'><SearchOutlinedIcon/></button>
             </div>
             <div className='cart-account-container'>
-                <Link to="/login" className='account-link'>REGISTER/SIGN IN</Link>
+              { user.username ? <div className='account-link'>Hi ,{user.username}</div> : <Link to="/login" className='account-link'>REGISTER/SIGN IN</Link>}
                 <div className='cart-container'>
                     <StyledBadge badgeContent={1} color="warning">
                         <button className='cart-btn'><ShoppingBagOutlinedIcon/></button>

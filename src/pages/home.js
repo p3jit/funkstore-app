@@ -2,6 +2,7 @@ import React from 'react'
 import Card from "../components/card/card";
 import Carousel from "../components/carousel/Carousel";
 import Navbar from '../components/navbar/navbar';
+import Subheader from '../components/subheader/subheader';
 import Footer from '../components/footer/footer';
 import "./home.css"
 import { Link } from 'react-router-dom';
@@ -10,6 +11,7 @@ function Home() {
   return (
     <>
       <Navbar/>
+      <Subheader/>
       <div className="container-lg ">
           <Carousel/>
           <div className="row py-2">

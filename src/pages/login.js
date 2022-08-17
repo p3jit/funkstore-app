@@ -14,7 +14,7 @@ function Login() {
   const navigate = useNavigate();
 
   //Context
-  const {user ,setUser} = useContext(AuthProvider);
+  const {setUser} = useContext(AuthProvider);
 
   //State
   const [error , setError] = useState(false);
@@ -49,9 +49,11 @@ function Login() {
       }
       const data = await res.json();
       setUser(data);
-      navigate("/");
     }
-    fetchUser();
+    fetchUser(); 
+    setTimeout(()=>{
+      navigate("/");
+    },2000);
   }
 
   return (
@@ -63,7 +65,7 @@ function Login() {
         <form className='form-register' name='login-from'>
           <div className='d-flex flex-column'>
             <input name='user' ref={userRef} placeholder='USERNAME' className="input-from-item my-3"></input>
-            <input name='password' ref={passRef} placeholder='PASSWORD' className="input-from-item my-3"></input>
+            <input name='password' ref={passRef} placeholder='PASSWORD' type={'password'} className="input-from-item my-3"></input>
           </div>
           <Link to="/register" className='acknowledge fs-6 pt-2 px-1' href="#a">CREATE NEW ACCOUNT</Link>
           <div className="button-container d-flex pt-4 justify-content-between">

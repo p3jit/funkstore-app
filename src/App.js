@@ -4,6 +4,7 @@ import Login from "./pages/login";
 import Product from "./pages/product";
 import Register from "./pages/register";
 import Error from "./pages/error";
+import Cart from "./pages/cart";
 
 function App() {
 
@@ -12,6 +13,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home/>} exact/>
         <Route path="/products/*" element={<Product/>}/>
+        <Route path="/cart/" element={<Cart/>}/>
         {/* <Route path="/products/mobiles" element={<Product/>}/>
         <Route path="/products/men" element={<Product/>}/>
         <Route path="/products/women" element={<Product/>}/>

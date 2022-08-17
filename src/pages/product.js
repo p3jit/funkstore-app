@@ -24,13 +24,7 @@ function Product() {
     const abortController = new AbortController();
     const signal = abortController.signal;
     const getData = async ()=>{
-      const res = await fetch(URL,{
-        headers: {
-          token: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyZmEyZDc3OWEwODMxZTEyODM0YzQ5ZCIsImFkbWluIjp0cnVlLCJpYXQiOjE2NjA2Njk1MDYsImV4cCI6MTY2MDkyODcwNn0.CIBDBqYfwPAXwNd5Zx2iBW5_6uB5oyhKDHX1t_SbfO0"
-        }
-      } , {
-        signal:signal
-      });
+      const res = await fetch(URL , {signal:signal});
 
       if( res.status !== 200) {
           setAllProduct([]);
