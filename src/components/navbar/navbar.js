@@ -1,4 +1,4 @@
-import {React , useContext} from 'react'
+import {React , useContext, useEffect, useState, useRef} from 'react'
 import "./navbar.css"
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import { styled } from '@mui/material/styles';
@@ -19,6 +19,30 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 function Navbar() {
   
   const {user} = useContext(AuthProvider);
+
+  const [searchFiltered,setSearchFiltered] = useState([]);
+  const [searchText,setSearchText] = useState("");
+  const searchRef = useRef();
+  const searchSelectContainerRef = useRef();
+
+  const handleSearch = (e) => {
+    setSearchText(e.target.value);
+  }
+  
+  const handleLinkClick = (e) => {
+    searchRef.current.value="";
+    searchSelectContainerRef.current.style.opacity = '0'
+  }
+
+  useEffect(()=>{
+    const fetchSearch = async () => {
+      const res = await fetch(`http://localhost:5000/api/search/${searchText}`);
+      const data = await res.json();
+      setSearchFiltered(data);
+      searchSelectContainerRef.current.style.opacity = '100';
+    }
+    fetchSearch();
+  },[searchText])
   
   return (
     <>
@@ -26,12 +50,33 @@ function Navbar() {
             <div className='logo-container'>
                 <Link to="/" className='logo'>FunkStore.</Link>
             </div>
-            <div className='search-container'>
-                <input className='search-bar'/>
-                <button className='search-btn'><SearchOutlinedIcon/></button>
+            <div className='search-outer-container'>
+              <div className='search-container'>
+                  <input className='search-bar' onChange={handleSearch} ref={searchRef}/>
+                  <button className='search-btn'><SearchOutlinedIcon/></button>
+              </div>
+              <section className='d-flex flex-column search-select-container px-2' ref={searchSelectContainerRef}>
+                {
+                  searchFiltered.length ? searchFiltered.map((item)=>(
+                    <Link to={`/products/${item.id}`} key={item.id} className='select-link py-1' onClick={handleLinkClick}>{item.title}</Link>
+                  )) : ""
+                }  
+              </section>
             </div>
             <div className='cart-account-container'>
-              { user.username ? <div className='account-link'>Hi ,{user.username}</div> : <Link to="/login" className='account-link'>REGISTER/SIGN IN</Link>}
+              { user.username ? 
+                <div className="dropdown account-link">
+                  <button className="btn btn-secondary-outline dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    HI, {user.username.toUpperCase()}
+                  </button>
+                  <ul className="dropdown-menu">
+                    <Link  className="dropdown-item" to="/orders">ORDERS</Link>
+                    <li className="dropdown-item"><div >SIGN OUT</div></li>
+                  </ul>
+                </div> 
+              : 
+                <Link to="/login" className='account-link'>REGISTER/SIGN IN</Link>
+              }
                 <div className='cart-container'>
                     <StyledBadge badgeContent={1} color="warning">
                         <button className='cart-btn'><ShoppingBagOutlinedIcon/></button>

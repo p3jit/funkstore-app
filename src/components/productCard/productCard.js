@@ -17,7 +17,7 @@ function ProductCard({data}) {
           </div>
           <div className='product-desc p-4 col-md-7 d-flex flex-column justify-content-center'>
             <h2 className='display-6'>{data.title}</h2>
-            <h4 className='text-muted'>{data.desc}</h4>
+            <h4 className='text-muted product-desc-text'>{ data.desc ? data.desc.substr(0,550) + "..." : ""}</h4>
             <h4 className='pt-2'>PRICE: {data.price}/- Rs</h4>
             <div className="quantity-group d-flex pt-2 align-items-center">
               <h5 className='pt-1'>QUANTITY:</h5>

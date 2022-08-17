@@ -49,11 +49,11 @@ function Login() {
       }
       const data = await res.json();
       setUser(data);
+      setTimeout(()=>{
+        navigate("/");
+      },2000);
     }
     fetchUser(); 
-    setTimeout(()=>{
-      navigate("/");
-    },2000);
   }
 
   return (

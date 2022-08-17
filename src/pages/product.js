@@ -18,7 +18,6 @@ function Product() {
   const location = useLocation();
   const cat = location.search.substring(1);
   const URL = cat ? `http://localhost:5000/api/products/?${cat}` : "http://localhost:5000/api/products/";
-  console.log(cat);
 
   useEffect(()=>{
     const abortController = new AbortController();
@@ -50,7 +49,6 @@ function Product() {
       else if(sort === "pasc") {
         setAllProduct(allProduct.sort((a,b)=>{ return parseInt(b.price) - parseInt(a.price)}));
       }
-      console.log(sort);
     }
   },[sort]);
 
@@ -64,7 +62,7 @@ function Product() {
       {
         allProduct.length ? <Filter setSort={setSort}/> : ""
       }
-      <div className='container gap-3 d-flex flex-column'>
+      <div className='container gap-3 d-flex flex-column pb-5 mb-5'>
         { allProduct.length ? allProduct.map((item)=>(
           <ProductCard key={item._id} data={item}/>
         )) 

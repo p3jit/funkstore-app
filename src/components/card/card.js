@@ -3,7 +3,6 @@ import "./card.css"
 
 function Card(props) {
 
-  console.log(props);
   return (
     <>
         <div className="card text-center fs-4 text-white d-flex">

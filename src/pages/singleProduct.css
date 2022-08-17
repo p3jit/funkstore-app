@@ -1,0 +1,9 @@
+.summary-container {
+    width: 100%;
+}
+
+.summary-header {
+    background-color: rgb(228, 225, 225);
+    width: fit-content;
+    padding: 10px;
+}

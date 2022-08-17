@@ -12,7 +12,7 @@ function Home() {
     <>
       <Navbar/>
       <Subheader/>
-      <div className="container-lg ">
+      <div className="container-lg pb-5 mb-5">
           <Carousel/>
           <div className="row py-2">
             <Link to="/products/?category=jewellery"  className="col-sm-12 col-md-4"><Card title="JWELERRY" imgName="jw1"/></Link>

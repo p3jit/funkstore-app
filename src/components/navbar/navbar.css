@@ -1,4 +1,5 @@
 .navbar-container {
+    position: relative;
     display: flex;
     padding: 15px 30px;
     justify-items: center;
@@ -64,6 +65,35 @@
 
 .account-link:hover  {
     color: black;
+}
+.dropdown-item:focus{
+    background-color: rgb(185, 185, 185);
+}
+
+.dropdown-menu, .dropdown-toggle{
+    border-radius: 0px !important;
+}
+
+.select-link, .select-link:hover {
+    text-decoration: none;
+    color: black;
+    background-color: white;
+    cursor: pointer;
+    width: 100%;
+}
+
+.search-select-container{
+    border: 1px solid lightgray;
+    background-color: white;
+    position: absolute;
+    display: flex;
+    width: 100%;
+}
+
+.search-outer-container{
+    flex: 2.5;
+    position: relative;
+    z-index: 1;
 }
 
 @media (max-width: 654.98px){
