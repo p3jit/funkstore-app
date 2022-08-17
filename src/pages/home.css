@@ -1,4 +1,5 @@
 .browse-all-btn {
     cursor: pointer;
     background-color: rgb(129, 129, 129);
+    justify-content: center;
 }

@@ -1,16 +1,17 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import "./subheader.css"
 
 function Subheader() {
   return (
     <>
         <div className='subheader-container'>
-            <a href='#a' className='subheader-item'>MOBILE</a>
-            <a href='#a' className='subheader-item'>JEWELLERY</a>
-            <a href='#a' className='subheader-item'>MEN</a>
-            <a href='#a' className='subheader-item'>WOMEN</a>
-            <a href='#a' className='subheader-item'>LAPTOP</a>
-            <a href='#a' className='subheader-item'>CAMERA</a>
+            <Link  to="/products/?category=mobile" className='subheader-item'>MOBILE</Link>
+            <Link  to="/products/?category=laptop" className='subheader-item'>LAPTOP</Link>
+            <Link  to="/products/?category=jewellery" className='subheader-item'>JEWELLERY</Link>
+            <Link  to="/products/?category=men" className='subheader-item'>MEN</Link>
+            <Link  to="/products/?category=women" className='subheader-item'>WOMEN</Link>
+            <Link  to="/products/?category=camera" className='subheader-item'>CAMERA</Link>
         </div>
     </>
     

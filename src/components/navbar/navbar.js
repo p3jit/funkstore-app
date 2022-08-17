@@ -4,6 +4,7 @@ import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import { styled } from '@mui/material/styles';
 import ShoppingBagOutlinedIcon from '@mui/icons-material/ShoppingBagOutlined';
 import Badge from '@mui/material/Badge';
+import { Link } from 'react-router-dom';
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
     '& .MuiBadge-badge': {
@@ -19,16 +20,15 @@ function Navbar() {
     <>
         <div className='navbar-container'>
             <div className='logo-container'>
-                <a href="/" className='logo'>FunkStore.</a>
+                <Link to="/" className='logo'>FunkStore.</Link>
             </div>
             <div className='search-container'>
                 <input className='search-bar'/>
                 <button className='search-btn'><SearchOutlinedIcon/></button>
             </div>
             <div className='cart-account-container'>
-                <div className='account-link'>REGISTER/SIGN IN</div>
+                <Link to="/login" className='account-link'>REGISTER/SIGN IN</Link>
                 <div className='cart-container'>
-                    <div className='cart-txt'>CART</div>
                     <StyledBadge badgeContent={1} color="warning">
                         <button className='cart-btn'><ShoppingBagOutlinedIcon/></button>
                     </StyledBadge>

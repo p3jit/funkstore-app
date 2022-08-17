@@ -34,8 +34,8 @@ function Register() {
           </div>
           <h4 className='acknowledge fs-6 pt-2 px-1'>By continuing, you agree to FunkStore's Terms of Use and Privacy Policy ✅ </h4>
           <div className="button-container d-flex pt-4 justify-content-between">
-            <button type="cancel" class="btn btn-outline-danger btn-lg">CANCEL</button>
-            <button type="submit" class="btn btn-outline-success btn-lg">REGISTER</button>
+            <button type="cancel" className="btn btn-outline-danger btn-lg">CANCEL</button>
+            <button type="submit" className="btn btn-outline-success btn-lg">REGISTER</button>
           </div> 
         </form>
       </div>

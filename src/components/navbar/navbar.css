@@ -58,6 +58,12 @@
     font-size: large;
     cursor: pointer;
     align-self: center;
+    text-decoration: none;
+    color: black;
+}
+
+.account-link:hover  {
+    color: black;
 }
 
 @media (max-width: 654.98px){
@@ -76,9 +82,7 @@
     }
     .account-link  {
         font-size: medium;
-    }
-    .cart-txt {
-    display: none;
+        padding-left: 4px;
     }
     .search-container {
         flex: 2;
