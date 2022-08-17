@@ -48,6 +48,8 @@ function Login() {
         return;
       }
       const data = await res.json();
+      console.log(data)
+      window.localStorage.setItem("userObj" , JSON.stringify({username:data.username , accessToken: data.accessToken}));
       setUser(data);
       setTimeout(()=>{
         navigate("/");

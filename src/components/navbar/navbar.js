@@ -4,7 +4,7 @@ import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import { styled } from '@mui/material/styles';
 import ShoppingBagOutlinedIcon from '@mui/icons-material/ShoppingBagOutlined';
 import Badge from '@mui/material/Badge';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthProvider } from '../../context/authContext';
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
@@ -18,12 +18,13 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 
 function Navbar() {
   
-  const {user} = useContext(AuthProvider);
+  const {user, setUser} = useContext(AuthProvider);
 
   const [searchFiltered,setSearchFiltered] = useState([]);
   const [searchText,setSearchText] = useState("");
   const searchRef = useRef();
   const searchSelectContainerRef = useRef();
+  const navigate = useNavigate();
 
   const handleSearch = (e) => {
     setSearchText(e.target.value);
@@ -32,6 +33,12 @@ function Navbar() {
   const handleLinkClick = (e) => {
     searchRef.current.value="";
     searchSelectContainerRef.current.style.opacity = '0'
+  }
+
+  const handleLogOut = () => {
+    window.localStorage.removeItem("userObj");
+    setUser({});
+
   }
 
   useEffect(()=>{
@@ -71,7 +78,7 @@ function Navbar() {
                   </button>
                   <ul className="dropdown-menu">
                     <Link  className="dropdown-item" to="/orders">ORDERS</Link>
-                    <li className="dropdown-item"><div >SIGN OUT</div></li>
+                    <li className="dropdown-item"><div onClick={handleLogOut}>SIGN OUT</div></li>
                   </ul>
                 </div> 
               : 
