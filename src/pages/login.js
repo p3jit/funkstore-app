@@ -1,4 +1,4 @@
-import {React , useRef , useContext, useState} from 'react'
+import {React , useRef , useContext, useState, useEffect} from 'react'
 import { Link, useNavigate} from 'react-router-dom'
 import  { AuthProvider } from '../context/authContext';
 import "./login.css"
@@ -14,16 +14,18 @@ function Login() {
   const navigate = useNavigate();
 
   //Context
-  const {setUser} = useContext(AuthProvider);
+  const {user,setUser} = useContext(AuthProvider);
 
   //State
   const [error , setError] = useState(false);
 
+  //Handle Cancel
   const handleCancel = (e) => {
     e.preventDefault();
     navigate("/");
   }
 
+  //Handle Login
   const handleLogin = (e) => {
     e.preventDefault();
 
@@ -35,6 +37,7 @@ function Login() {
       return;
     }
 
+    //Login function
     const fetchUser = async () => {
       const res = await fetch("http://localhost:5000/api/auth/login" , {
         method: 'POST',
@@ -48,8 +51,7 @@ function Login() {
         return;
       }
       const data = await res.json();
-      console.log(data)
-      window.localStorage.setItem("userObj" , JSON.stringify({username:data.username , accessToken: data.accessToken}));
+      window.localStorage.setItem("userObj" , JSON.stringify({userId:data._id,username:data.username , accessToken: data.accessToken}));
       setUser(data);
       setTimeout(()=>{
         navigate("/");
@@ -57,6 +59,13 @@ function Login() {
     }
     fetchUser(); 
   }
+
+  // Redirect user if already logged in
+  useEffect(()=>{
+    if(user.username) {
+      navigate(-1);
+    }
+  },[]);
 
   return (
     <>

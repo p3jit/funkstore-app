@@ -64,7 +64,7 @@ function Product() {
       }
       <div className='container gap-3 d-flex flex-column pb-5 mb-5'>
         { allProduct.length ? allProduct.map((item)=>(
-          <ProductCard key={item._id} data={item}/>
+          <ProductCard key={item._id} data={item} id={item._id}/>
         )) 
         : (
         <div className="outer-product-container d-flex display-6">PRODUCT NOT FOUND</div>

@@ -1,0 +1,19 @@
+.cart-item-container {
+    border: 1px solid black;
+    margin: 5px;
+    width: 100%;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.cart-item-right{
+    justify-content: space-between;
+}
+
+.card-img-container {
+    max-width: 150px;
+}
+
+.cart-item-img {
+    padding: 15px;
+}

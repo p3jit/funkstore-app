@@ -1,12 +1,27 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useRef } from 'react'
+import { CartProvider } from '../../context/cartContext';
 import "./productCard.css"
 
-function ProductCard({data}) {
-  const [qty,setQty] = useState(1);
+function ProductCard({data , id}) {
+  const {cart,setCart} = useContext(CartProvider);
 
-  useEffect(()=>{
-    // console.log(qty);
-  },[qty])
+  const qtyRef = useRef();
+
+
+  const handleAddItem = () => {
+    const newProduct = {
+      productId:id,
+      quantity:qtyRef.current.value,
+      productImg:data.img
+    }
+    if(!cart.products.find(obj=>obj.productId === id)) {
+      const newCart = {
+        userId : cart.userId,
+        products: [...cart.products,newProduct]
+      };
+      setCart(newCart);
+    }
+  }
 
   return (
     <>
@@ -21,8 +36,8 @@ function ProductCard({data}) {
             <h4 className='pt-2'>PRICE: {data.price}/- Rs</h4>
             <div className="quantity-group d-flex pt-2 align-items-center">
               <h5 className='pt-1'>QUANTITY:</h5>
-              <input type={'number'} min={"0"} defaultValue="1" className='mx-4' onChange={(e)=>{setQty(e.target.value)}}/>
-              <button className='btn btn-outline-secondary btn-sm'>ADD TO CART</button>  
+              <input type={'number'} min={"1"} defaultValue="1" className='mx-4' ref={qtyRef}/>
+              <button className='btn btn-outline-secondary btn-sm' onClick={handleAddItem}>ADD TO CART</button>  
             </div>
           </div>
         </div>

@@ -5,6 +5,7 @@ import App from './App';
 import { BrowserRouter} from 'react-router-dom';
 import ProductsContext from './context/productContext';
 import AuthContext from './context/authContext';
+import CartContext from './context/cartContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -12,9 +13,11 @@ root.render(
   <React.StrictMode>
       <BrowserRouter>
         <AuthContext>
-          <ProductsContext>
-            <App />
-          </ProductsContext>
+          <CartContext>
+            <ProductsContext>
+              <App />
+            </ProductsContext>
+          </CartContext>
         </AuthContext>
       </BrowserRouter>
   </React.StrictMode>

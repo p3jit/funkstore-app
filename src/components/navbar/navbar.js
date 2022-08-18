@@ -6,6 +6,7 @@ import ShoppingBagOutlinedIcon from '@mui/icons-material/ShoppingBagOutlined';
 import Badge from '@mui/material/Badge';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthProvider } from '../../context/authContext';
+import { CartProvider } from '../../context/cartContext';
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
     '& .MuiBadge-badge': {
@@ -19,6 +20,7 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 function Navbar() {
   
   const {user, setUser} = useContext(AuthProvider);
+  const {cart} = useContext(CartProvider);
 
   const [searchFiltered,setSearchFiltered] = useState([]);
   const [searchText,setSearchText] = useState("");
@@ -32,7 +34,7 @@ function Navbar() {
   
   const handleLinkClick = (e) => {
     searchRef.current.value="";
-    searchSelectContainerRef.current.style.opacity = '0'
+    searchSelectContainerRef.current.style.opacity = '0';
   }
 
   const handleLogOut = () => {
@@ -85,7 +87,7 @@ function Navbar() {
                 <Link to="/login" className='account-link'>REGISTER/SIGN IN</Link>
               }
                 <div className='cart-container'>
-                    <StyledBadge badgeContent={1} color="warning">
+                    <StyledBadge badgeContent={ cart && cart.products && cart.products.length ? cart.products.length : 0} color="warning" onClick={()=>{navigate("/cart")}}>
                         <button className='cart-btn'><ShoppingBagOutlinedIcon/></button>
                     </StyledBadge>
                 </div>

@@ -35,7 +35,7 @@ const SingleProduct = () => {
                     <Navbar/>
                     <Subheader/>
                     <div className='container'>
-                        <ProductCard data={currProduct}/>
+                        <ProductCard data={currProduct} id={productId}/>
                         <div className='summary-container pb-5 mb-5'>
                             <h2 className='justify-content-center summary-header mb-4'>DETAILS</h2>
                             <h3>{ currProduct.desc ? currProduct.desc + currProduct.desc + currProduct.desc + currProduct.desc : "" }</h3>
