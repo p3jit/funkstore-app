@@ -1,7 +1,5 @@
 import React, { createContext , useContext, useEffect, useState } from 'react'
-import { createSearchParams } from 'react-router-dom';
 import { AuthProvider } from './authContext';
-let isFirstFetchDone = false;
 
 export const CartProvider = createContext();
 
@@ -14,7 +12,7 @@ const CartContext = ({children}) => {
     useEffect(()=>{
         if(cart !== null || !user.username) return;
         const fetchCart = async ()=>{
-            const res = await fetch(`http://localhost:5000/api/carts/${user.userId}`,{
+            const res = await fetch(`${process.env.REACT_APP_API_URL}carts/${user.userId}`,{
                 headers: {
                     'token' : `Bearer ${user.accessToken}`
                 },
@@ -26,7 +24,6 @@ const CartContext = ({children}) => {
         
          if(!cart) {
             fetchCart();
-            isFirstFetchDone = true;
          }
     },[]);
 
@@ -34,7 +31,7 @@ const CartContext = ({children}) => {
     useEffect(()=>{
         if(cart === null || !user.username) return;
         const fetchUpdateCart = async () => {
-            const res = await fetch(`http://localhost:5000/api/carts/${user.userId}` , {
+            const res = await fetch(`${process.env.REACT_APP_API_URL}carts/${user.userId}` , {
                 method : 'PUT',
                 headers : {
                     'token' : `Bearer ${user.accessToken}`,

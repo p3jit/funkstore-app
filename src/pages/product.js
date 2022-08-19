@@ -17,7 +17,7 @@ function Product() {
   
   const location = useLocation();
   const cat = location.search.substring(1);
-  const URL = cat ? `http://localhost:5000/api/products/?${cat}` : "http://localhost:5000/api/products/";
+  const URL = cat ? `${process.env.REACT_APP_API_URL}products/?${cat}` : `${process.env.REACT_APP_API_URL}products/`;
 
   useEffect(()=>{
     const abortController = new AbortController();

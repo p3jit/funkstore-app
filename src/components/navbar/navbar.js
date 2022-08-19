@@ -46,7 +46,7 @@ function Navbar() {
 
   useEffect(()=>{
     const fetchSearch = async () => {
-      const res = await fetch(`http://localhost:5000/api/search/${searchText}`);
+      const res = await fetch(`${process.env.REACT_APP_API_URL}search/${searchText}`);
       const data = await res.json();
       setSearchFiltered(data);
       searchSelectContainerRef.current.style.opacity = '100';

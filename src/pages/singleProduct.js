@@ -16,7 +16,7 @@ const SingleProduct = () => {
 
     useEffect(()=>{
         const fetchSingleProduct = async () => {
-            const res = await fetch(`http://localhost:5000/api/products/${productId}`);
+            const res = await fetch(`${process.env.REACT_APP_API_URL}products/${productId}`);
             if(res.status !== 200){
                 setError(true);
                 return;

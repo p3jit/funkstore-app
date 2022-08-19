@@ -1,7 +1,6 @@
 import {React , useRef , useContext, useState, useEffect} from 'react'
 import { Link, useNavigate} from 'react-router-dom'
 import  { AuthProvider } from '../context/authContext';
-import { CartProvider } from '../context/cartContext';
 import "./login.css"
 
 
@@ -40,7 +39,7 @@ function Login() {
 
     //Login function
     const fetchUser = async () => {
-      const res = await fetch("http://localhost:5000/api/auth/login" , {
+      const res = await fetch(`${process.env.REACT_APP_API_URL}auth/login` , {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
