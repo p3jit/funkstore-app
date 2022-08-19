@@ -1,14 +1,17 @@
 import React, { useContext, useRef } from 'react'
+import { AuthProvider } from '../../context/authContext';
 import { CartProvider } from '../../context/cartContext';
 import "./productCard.css"
 
 function ProductCard({data , id}) {
   const {cart,setCart} = useContext(CartProvider);
+  const {user} = useContext(AuthProvider);
 
   const qtyRef = useRef();
 
 
   const handleAddItem = () => {
+    if(!user.username) return;
     const newProduct = {
       productId:id,
       quantity:qtyRef.current.value,

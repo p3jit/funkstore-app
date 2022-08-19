@@ -20,7 +20,7 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 function Navbar() {
   
   const {user, setUser} = useContext(AuthProvider);
-  const {cart} = useContext(CartProvider);
+  const {cart, setCart} = useContext(CartProvider);
 
   const [searchFiltered,setSearchFiltered] = useState([]);
   const [searchText,setSearchText] = useState("");
@@ -40,6 +40,7 @@ function Navbar() {
   const handleLogOut = () => {
     window.localStorage.removeItem("userObj");
     setUser({});
+    setCart(null);
 
   }
 

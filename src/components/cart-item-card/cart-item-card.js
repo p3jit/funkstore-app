@@ -6,7 +6,8 @@ const CartItemCard = ({data}) => {
 
   const {cart,setCart} = useContext(CartProvider);
   const qtyRef = useRef();
-
+  console.log({data,cart});
+  
   const findProductAndSetQuantity = () => {
     let newCart = JSON.parse(JSON.stringify(cart));
     for(let x of newCart.products){
@@ -14,6 +15,14 @@ const CartItemCard = ({data}) => {
         x.quantity = qtyRef.current.value;
       }
     }
+    setCart(newCart);
+  }
+
+  const handleRemoveCartItem = () => {
+    const newCart = {
+      userId : cart.userId,
+      products: [...cart.products.filter((item)=> item.productId !== data.productId)]
+    };
     setCart(newCart);
   }
 
@@ -26,7 +35,7 @@ const CartItemCard = ({data}) => {
             <h3 className='fs-4'>{data.productId}</h3>
             <h5>Quantity: </h5>
             <input type="number" min="1" defaultValue={`${data.quantity}`} ref={qtyRef} onChange={findProductAndSetQuantity}/>
-            <button type="button" className="btn btn-outline-danger btn-remove">REMOVE ITEM</button>
+            <button type="button" className="btn btn-outline-danger btn-remove" onClick={handleRemoveCartItem}>REMOVE ITEM</button>
         </div>
     </>
   )

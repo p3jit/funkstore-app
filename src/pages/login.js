@@ -1,6 +1,7 @@
 import {React , useRef , useContext, useState, useEffect} from 'react'
 import { Link, useNavigate} from 'react-router-dom'
 import  { AuthProvider } from '../context/authContext';
+import { CartProvider } from '../context/cartContext';
 import "./login.css"
 
 

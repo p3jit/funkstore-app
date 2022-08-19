@@ -7,6 +7,7 @@ import ProductsContext from './context/productContext';
 import AuthContext from './context/authContext';
 import CartContext from './context/cartContext';
 
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(

@@ -34,11 +34,6 @@ const CartContext = ({children}) => {
     useEffect(()=>{
         if(cart === null || !user.username) return;
         const fetchUpdateCart = async () => {
-            const JsonProducts = [];
-            cart.products.forEach(element => {
-                console.log(JSON.stringify(element));
-                JsonProducts.push(JSON.stringify(element));
-            });
             const res = await fetch(`http://localhost:5000/api/carts/${user.userId}` , {
                 method : 'PUT',
                 headers : {
