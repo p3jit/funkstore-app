@@ -1,6 +1,7 @@
 import {React , useRef , useContext, useState, useEffect} from 'react'
 import { Link, useNavigate} from 'react-router-dom'
 import  { AuthProvider } from '../context/authContext';
+import { CartProvider } from '../context/cartContext';
 import "./login.css"
 
 
@@ -15,6 +16,7 @@ function Login() {
 
   //Context
   const {user,setUser} = useContext(AuthProvider);
+  const {cart,setCart} = useContext(CartProvider);
 
   //State
   const [error , setError] = useState(false);
@@ -39,7 +41,7 @@ function Login() {
 
     //Login function
     const fetchUser = async () => {
-      const res = await fetch(`${process.env.REACT_APP_API_URL}auth/login` , {
+      const res = await fetch("http://localhost:5000/api/auth/login" , {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -55,6 +57,7 @@ function Login() {
       setUser(data);
       setTimeout(()=>{
         navigate("/");
+        window.location.reload();
       },2000);
     }
     fetchUser(); 

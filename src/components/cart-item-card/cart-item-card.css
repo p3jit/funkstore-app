@@ -6,14 +6,18 @@
     justify-content: space-around;
 }
 
-.cart-item-right{
-    justify-content: space-between;
-}
-
 .card-img-container {
     max-width: 150px;
 }
 
 .cart-item-img {
     padding: 15px;
+}
+
+.card-item-name{
+    width: 15ch !important;
+}
+
+.card-input-field{
+    max-width: 200px !important;
 }

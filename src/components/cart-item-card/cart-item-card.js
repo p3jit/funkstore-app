@@ -6,7 +6,6 @@ const CartItemCard = ({data}) => {
 
   const {cart,setCart} = useContext(CartProvider);
   const qtyRef = useRef();
-  console.log({data,cart});
   
   const findProductAndSetQuantity = () => {
     let newCart = JSON.parse(JSON.stringify(cart));
@@ -32,9 +31,9 @@ const CartItemCard = ({data}) => {
             <div className='col-5 card-img-container'>
                 <img src={`./assets/productImages/${data.productImg}`} alt="cart-item-img" className='img-fluid cart-item-img'></img>
             </div>
-            <h3 className='fs-4'>{data.productId}</h3>
+            <h3 className='fs-5 card-item-name'>{data.productName}</h3>
             <h5>Quantity: </h5>
-            <input type="number" min="1" defaultValue={`${data.quantity}`} ref={qtyRef} onChange={findProductAndSetQuantity}/>
+            <input type="number" min="1" defaultValue={`${data.quantity}`} ref={qtyRef} onChange={findProductAndSetQuantity} className=""/>
             <button type="button" className="btn btn-outline-danger btn-remove" onClick={handleRemoveCartItem}>REMOVE ITEM</button>
         </div>
     </>

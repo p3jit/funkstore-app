@@ -15,7 +15,8 @@ function ProductCard({data , id}) {
     const newProduct = {
       productId:id,
       quantity:qtyRef.current.value,
-      productImg:data.img
+      productImg:data.img,
+      productName:data.title
     }
     if(!cart.products.find(obj=>obj.productId === id)) {
       const newCart = {
