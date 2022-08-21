@@ -85,7 +85,7 @@ function Navbar() {
                   </ul>
                 </div> 
               : 
-                <Link to="/login" className='account-link'>REGISTER/SIGN IN</Link>
+                <Link to="/login" className='account-link '>REGISTER/SIGN IN</Link>
               }
                 <div className='cart-container'>
                     <StyledBadge badgeContent={ cart && cart.products && cart.products.length ? cart.products.length : 0} color="warning" onClick={()=>{navigate("/cart")}}>

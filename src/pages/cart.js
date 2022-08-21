@@ -31,8 +31,8 @@ const Cart = () => {
         <div className='container pt-5 pb-5 mb-5'>
           <h3 className='cart-owner rounded-2'>{user.username.toUpperCase()}'S CART</h3>
           <div className='row'>
-            <div className='col-12 col-md-8'>
-              <div className='d-flex flex-column'>
+            <div className='col-12 col-md-8 cart-products'>
+              <div className='d-flex flex-column '>
                 {
                   !cart || cart.products.length === 0 ? <div>NO PRODUCTS IN THE CART</div> : ""
                 }
@@ -43,25 +43,28 @@ const Cart = () => {
                 }
               </div>
             </div>
-            <div className='col-12 col-md-4 py-2 py-md-0'>
-              <div>
-                <h3 className='cart-owner rounded-2'>SUMMARY</h3>
-                <div className='d-flex flex-column border border-dark p-4 gap-3'>
-                  <div className='row'>
-                    <div className='col text-start'>
-                      <h5>SUBTOTAL: </h5>
-                      <h5>SHIPPING: </h5>
+            { cart && cart.products.length ? (
+              <div className='col-12 col-md-4 py-2 py-md-0'>
+                <div>
+                  <h3 className='cart-owner rounded-2'>SUMMARY</h3>
+                  <div className='d-flex flex-column border border-dark p-4 gap-3'>
+                    <div className='row'>
+                      <div className='col text-start'>
+                        <h5>SUBTOTAL: </h5>
+                        <h5>SHIPPING: </h5>
+                      </div>
+                      <div className='col text-end'>
+                        <h5>{total} /- Rs</h5>
+                        <h5>251 /- Rs</h5>        
+                      </div>
                     </div>
-                    <div className='col text-end'>
-                      <h5>{total} /- Rs</h5>
-                      <h5>251 /- Rs</h5>        
-                    </div>
-                  </div>
 
-                  <button className='btn btn-warning'>CHECKOUT</button>
+                    <button className='btn btn-warning'>CHECKOUT</button>
+                  </div>
                 </div>
               </div>
-            </div>
+            ) : "" }
+
           </div>
         </div>
         <Footer/>
