@@ -1,5 +1,10 @@
 .browse-all-btn {
     cursor: pointer;
-    background-color: rgb(129, 129, 129);
+    background-color: rgb(66, 66, 66);
     justify-content: center;
+    text-decoration: none;
+}
+
+.browse-all-btn:hover {
+    background-color: rgb(36, 36, 36);
 }

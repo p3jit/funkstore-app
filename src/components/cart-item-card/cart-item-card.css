@@ -7,7 +7,7 @@
 }
 
 .card-img-container {
-    max-width: 150px;
+    max-width: 10rem;
 }
 
 .cart-item-img {
@@ -15,9 +15,5 @@
 }
 
 .card-item-name{
-    width: 15ch !important;
-}
-
-.card-input-field{
-    max-width: 200px !important;
+    max-width: 15ch !important;
 }

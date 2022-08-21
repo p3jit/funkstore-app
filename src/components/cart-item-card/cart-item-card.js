@@ -27,14 +27,19 @@ const CartItemCard = ({data}) => {
 
   return (
     <>
-        <div className='cart-item-container 2-100 d-flex'>
-            <div className='col-5 card-img-container'>
+        <div className='cart-item-container d-flex rounded-2'>
+            <div className='col-6 card-img-container'>
                 <img src={`./assets/productImages/${data.productImg}`} alt="cart-item-img" className='img-fluid cart-item-img'></img>
             </div>
-            <h3 className='fs-5 card-item-name'>{data.productName}</h3>
-            <h5>Quantity: </h5>
-            <input type="number" min="1" defaultValue={`${data.quantity}`} ref={qtyRef} onChange={findProductAndSetQuantity} className=""/>
-            <button type="button" className="btn btn-outline-danger btn-remove" onClick={handleRemoveCartItem}>REMOVE ITEM</button>
+            <div className='col-6 d-flex flex-column py-3 gap-3'>
+              <h3 className='fs-2 card-item-name'>{data.productName}</h3>
+              <div className='d-flex flex-column'>
+              <h3 className='fs-5 card-item-name'>PRICE: {data.productPrice} /- Rs</h3>
+                <h5>Quantity: </h5>
+                <input type="number" min="1" defaultValue={`${data.quantity}`} ref={qtyRef} onChange={findProductAndSetQuantity}/>
+              </div>
+              <button type="button" className="btn btn-outline-danger" onClick={handleRemoveCartItem}>REMOVE ITEM</button>
+            </div>
         </div>
     </>
   )

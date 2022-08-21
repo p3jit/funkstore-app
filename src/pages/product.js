@@ -14,7 +14,8 @@ function Product() {
 
   //Local States
   const [sort , setSort] = useState("pdesc");
-  
+  const [isLoading , setIsLoading] = useState(1); 
+
   const location = useLocation();
   const cat = location.search.substring(1);
   const URL = cat ? `${process.env.REACT_APP_API_URL}products/?${cat}` : `${process.env.REACT_APP_API_URL}products/`;
@@ -33,12 +34,13 @@ function Product() {
       setAllProduct(data);
     }
     getData();
+    setIsLoading(0);
     setSort("pasc");
 
     return (()=>{
+      setIsLoading(0);
       abortController.abort();
     })
-
   },[cat]);
 
   useEffect(()=>{
@@ -67,7 +69,7 @@ function Product() {
           <ProductCard key={item._id} data={item} id={item._id}/>
         )) 
         : (
-        <div className="outer-product-container d-flex display-6">PRODUCT NOT FOUND</div>
+        <div className="outer-product-container d-flex display-6">{ isLoading ? "LOADING..." : "NOT FOUND"}</div>
         )}
       </div>
       <Footer/>

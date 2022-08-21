@@ -58,7 +58,7 @@ function Navbar() {
     <>
         <div className='navbar-container'>
             <div className='logo-container'>
-                <Link to="/" className='logo'>FunkStore.</Link>
+                <Link to="/" className='logo fs-3'>FunkStore.</Link>
             </div>
             <div className='search-outer-container'>
               <div className='search-container'>

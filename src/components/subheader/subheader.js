@@ -5,7 +5,7 @@ import "./subheader.css"
 function Subheader() {
   return (
     <>
-        <div className='subheader-container'>
+        <div className='subheader-container d-flex gap-1'>
             <Link  to="/products/?category=mobile" className='subheader-item'>MOBILE</Link>
             <Link  to="/products/?category=laptop" className='subheader-item'>LAPTOP</Link>
             <Link  to="/products/?category=jewellery" className='subheader-item'>JEWELLERY</Link>

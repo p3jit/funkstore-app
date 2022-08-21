@@ -16,7 +16,8 @@ function ProductCard({data , id}) {
       productId:id,
       quantity:qtyRef.current.value,
       productImg:data.img,
-      productName:data.title
+      productName:data.title,
+      productPrice:data.price
     }
     if(!cart.products.find(obj=>obj.productId === id)) {
       const newCart = {
@@ -40,9 +41,9 @@ function ProductCard({data , id}) {
             <h4 className='pt-2'>PRICE: {data.price}/- Rs</h4>
             <div className="quantity-group d-flex pt-2 align-items-center">
               <h5 className='pt-1'>QUANTITY:</h5>
-              <input type={'number'} min={"1"} defaultValue="1" className='mx-4' ref={qtyRef}/>
-              <button className='btn btn-outline-secondary btn-sm' onClick={handleAddItem}>ADD TO CART</button>  
+              <input type={'number'} min={"1"} defaultValue="1" className='mx-4 w-100' ref={qtyRef}/> 
             </div>
+            <button className='btn btn-outline-secondary btn-sm mt-3' onClick={handleAddItem}>ADD TO CART</button> 
           </div>
         </div>
       </div>
