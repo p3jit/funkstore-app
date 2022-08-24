@@ -13,18 +13,20 @@ function Product() {
   const {allProduct , setAllProduct} = useContext(Products);
 
   //Local States
-  const [sort , setSort] = useState("pdesc");
+  const [sort , setSort] = useState("asc");
   const [isLoading , setIsLoading] = useState(1); 
 
   const location = useLocation();
   const cat = location.search.substring(1);
-  const URL = cat ? `${process.env.REACT_APP_API_URL}products/?${cat}` : `${process.env.REACT_APP_API_URL}products/`;
 
   useEffect(()=>{
     const abortController = new AbortController();
     const signal = abortController.signal;
+    const URL = cat ? `${process.env.REACT_APP_API_URL}products/?${cat}` : `${process.env.REACT_APP_API_URL}products/`;
+    const qSort = sort ? cat ? `&sort=${sort}` : `?&sort=${sort}` : '';
+
     const getData = async ()=>{
-      const res = await fetch(URL , {signal:signal});
+      const res = await fetch(URL+qSort , {signal:signal});
 
       if( res.status !== 200) {
           setAllProduct([]);
@@ -35,24 +37,23 @@ function Product() {
     }
     getData();
     setIsLoading(0);
-    setSort("pasc");
 
     return (()=>{
       setIsLoading(0);
       abortController.abort();
     })
-  },[cat]);
+  },[cat,sort]);
 
-  useEffect(()=>{
-    if(allProduct.length !== 0){
-      if(sort === "pdesc"){
-        setAllProduct(allProduct.sort((a,b)=>{ return parseInt(a.price) - parseInt(b.price)}));
-      }
-      else if(sort === "pasc") {
-        setAllProduct(allProduct.sort((a,b)=>{ return parseInt(b.price) - parseInt(a.price)}));
-      }
-    }
-  },[sort]);
+  // useEffect(()=>{
+  //   if(allProduct.length !== 0){
+  //     if(sort === "pdesc"){
+  //       setAllProduct(allProduct.sort((a,b)=>{ return parseInt(a.price) - parseInt(b.price)}));
+  //     }
+  //     else if(sort === "pasc") {
+  //       setAllProduct(allProduct.sort((a,b)=>{ return parseInt(b.price) - parseInt(a.price)}));
+  //     }
+  //   }
+  // },[sort]);
 
   return (
     <>

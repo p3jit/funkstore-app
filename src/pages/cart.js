@@ -13,13 +13,11 @@ const Cart = () => {
   const [total , setTotal] = useState(0);
 
   useEffect(()=>{
-    console.log(cart);
     if(cart && cart.products && cart.products.length > 0) {
       let tempTotal = 0;
       cart.products.forEach((item)=>{
         tempTotal += parseInt(item.productPrice * parseInt(item.quantity));
       });
-      console.log(tempTotal);
       setTotal(tempTotal);
     }
   },[cart])
