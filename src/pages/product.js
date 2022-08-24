@@ -14,7 +14,7 @@ function Product() {
 
   //Local States
   const [sort , setSort] = useState("asc");
-  const [isLoading , setIsLoading] = useState(1); 
+  const [isLoading , setIsLoading] = useState(true); 
 
   const location = useLocation();
   const cat = location.search.substring(1);
@@ -30,30 +30,23 @@ function Product() {
 
       if( res.status !== 200) {
           setAllProduct([]);
+          setIsLoading(false);
           return;
       }
       const data = await res.json();
       setAllProduct(data);
+      setIsLoading(false);
     }
     getData();
-    setIsLoading(0);
 
     return (()=>{
-      setIsLoading(0);
       abortController.abort();
     })
   },[cat,sort]);
 
-  // useEffect(()=>{
-  //   if(allProduct.length !== 0){
-  //     if(sort === "pdesc"){
-  //       setAllProduct(allProduct.sort((a,b)=>{ return parseInt(a.price) - parseInt(b.price)}));
-  //     }
-  //     else if(sort === "pasc") {
-  //       setAllProduct(allProduct.sort((a,b)=>{ return parseInt(b.price) - parseInt(a.price)}));
-  //     }
-  //   }
-  // },[sort]);
+  useEffect(()=>{
+    setIsLoading(true);
+  },[sort]);
 
   return (
     <>
@@ -66,11 +59,11 @@ function Product() {
         allProduct.length ? <Filter setSort={setSort}/> : ""
       }
       <div className='container gap-3 d-flex flex-column pb-5 mb-5'>
-        { allProduct.length ? allProduct.map((item)=>(
+        { !isLoading && allProduct.length ? allProduct.map((item)=>(
           <ProductCard key={item._id} data={item} id={item._id}/>
         )) 
         : (
-        <div className="outer-product-container d-flex display-6">{ isLoading ? "LOADING..." : "NOT FOUND"}</div>
+        <div className="outer-product-container d-flex display-6">{ isLoading ? "LOADING" : "NOT FOUND"}</div>
         )}
       </div>
       <Footer/>
